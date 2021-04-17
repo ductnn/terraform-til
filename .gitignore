@@ -4,3 +4,4 @@
 */.terraform
 */.terraform.lock.hcl
 */mykey*
+*/private_ips.txt
