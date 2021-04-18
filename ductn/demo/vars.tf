@@ -16,7 +16,6 @@ variable INSTANCE_TYPE {
     default     = "t2.micro"
 }
 
-
 variable "PATH_TO_PRIVATE_KEY" {
     default = "mykey"
 }
@@ -27,5 +26,9 @@ variable "PATH_TO_PUBLIC_KEY" {
 
 variable "INSTANCE_USERNAME" {
     default = "ubuntu"
+}
+
+variable "INSTALL_NGINX" {
+    default = "./scripts/script.sh"
 }
 
