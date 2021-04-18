@@ -6,3 +6,4 @@
 *.terraform.tfstate.lock.info
 *mykey*
 *private_ips.txt
+*host
