@@ -1,7 +1,8 @@
-*/terraform.tfvars
-*/terraform.tfstate
-*/terraform.tfstate.backup
-*/.terraform
-*/.terraform.lock.hcl
-*/mykey*
-*/private_ips.txt
+*.tfvars
+*.tfstate
+*.tfstate.backup
+*.terraform
+*.terraform.lock.hcl
+*.terraform.tfstate.lock.info
+*mykey*
+*private_ips.txt
