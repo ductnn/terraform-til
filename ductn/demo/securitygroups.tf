@@ -3,33 +3,49 @@ resource "aws_security_group" "myinstance" {
     vpc_id      = aws_vpc.main.id
     name        = "myinstance"
     description = "security group for my instance"
-    egress {
-        from_port   = 0
-        to_port     = 0
-        protocol    = "-1"
+
+    # Ingress
+    ingress {
+        from_port   = 22
+        to_port     = 22
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        from_port   = 80
+        to_port     = 80
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
     ingress {
-        from_port   = 0
-        to_port     = 0
-        protocol    = "-1"
+        from_port   = 3000
+        to_port     = 3000
+        protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    # ingress {
-    #     from_port   = 22
-    #     to_port     = 22
-    #     protocol    = "tcp"
-    #     cidr_blocks = ["0.0.0.0/0"]
-    # }
+    # Egress
+    egress {
+        from_port   = 0
+        to_port     = 65535
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+        }
 
-    # ingress {
-    #     from_port       = 80
-    #     to_port         = 80
-    #     protocol        = "tcp"
-    #     security_groups = [aws_security_group.load_balancer.id]
-    # }
+    # Enable ICMP
+    ingress {
+        from_port = -1
+        to_port = -1
+        protocol = "icmp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
 
     tags = {
         Name = "myinstance"
@@ -37,10 +53,17 @@ resource "aws_security_group" "myinstance" {
 }
 
 # Load Balancers
-resource "aws_security_group" "load_balancer" {
-    name        = "load_balancer_security_group"
-    description = "Load Balancer Security Group"
-    vpc_id = aws_vpc.main.id
+resource "aws_security_group" "elb-securitygroup" {
+    vpc_id      = aws_vpc.main.id
+    name        = "elb"
+    description = "security group for load balancer"
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
     ingress {
         from_port   = 80
         to_port     = 80
@@ -55,14 +78,7 @@ resource "aws_security_group" "load_balancer" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    egress {
-        from_port   = 0
-        to_port     = 0
-        protocol    = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-
     tags = {
-        Name = "LoadBalancer"
+        Name = "elb"
     }
 }
