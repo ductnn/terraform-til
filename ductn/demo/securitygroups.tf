@@ -1,6 +1,7 @@
 # Instance
 resource "aws_security_group" "myinstance" {
-    vpc_id      = aws_vpc.main.id
+    # vpc_id      = aws_vpc.main.id
+    vpc_id = module.vpc.vpc_id
     name        = "myinstance"
     description = "security group for my instance"
 
@@ -54,7 +55,8 @@ resource "aws_security_group" "myinstance" {
 
 # Load Balancers
 resource "aws_security_group" "elb-securitygroup" {
-    vpc_id      = aws_vpc.main.id
+    # vpc_id      = aws_vpc.main.id
+    vpc_id = module.vpc.vpc_id
     name        = "elb"
     description = "security group for load balancer"
     egress {
