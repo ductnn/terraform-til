@@ -1,5 +1,5 @@
 - name: Test
-  hosts: ubuntu
+  hosts: [ubuntu, ubuntu1]
   become: true
   tasks:
     - name: capture output of whoami command
