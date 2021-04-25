@@ -33,6 +33,13 @@ resource "aws_security_group" "myinstance" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
+    ingress {
+        from_port   = 8000
+        to_port     = 8000
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
     # Egress
     egress {
         from_port   = 0
@@ -84,5 +91,24 @@ resource "aws_security_group" "elb-securitygroup" {
 
     tags = {
         Name = "elb"
+    }
+}
+
+# DATABASE POSTGRESQL
+resource "aws_security_group" "db-securitygroup" {
+    vpc_id = var.VPC_ID
+    name        = "postgresql-dev"
+    description = "security group for database"
+
+    ingress {
+        from_port   = 5432
+        to_port     = 5432
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags = {
+        Owner       = "user"
+        Environment = "dev"
     }
 }

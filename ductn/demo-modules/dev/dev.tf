@@ -22,3 +22,12 @@ module "instances" {
     ELB_NAME = module.load_balancer.elb_name
 }
 
+module "database" {
+    source = "../modules/databases"
+    ENV = "dev"
+    AWS_REGION = var.AWS_REGION
+    PRIVATE_SUBNETS = module.vpc.private_subnets
+    DB_SECURITY_GROUP = module.security_groups.db_securitygroup_id
+    POSTGRES_USERNAME = var.POSTGRES_USERNAME
+    POSTGRES_PASSWORD = var.POSTGRES_PASSWORD
+}
