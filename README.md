@@ -9,6 +9,8 @@ title: Terraform
 # Demo overview
 Demo Directory | Description
 ------------ | -------------
+[ductn/demo](https://github.com/ductnn/terraform-til/tree/master/ductn/demo) | Demo deploy a web app to AWS using terraform and ansible
+[ductn/demo-modules](https://github.com/ductnn/terraform-til/tree/master/ductn/demo-modules) | Demo deploy a web app to AWS using terraform (write in module) and ansible
 [first-steps](https://github.com/ductnn/terraform-til/tree/master/first-steps) | First steps
 [demo-1](https://github.com/ductnn/terraform-til/tree/master/demo-1) | First steps: Launching an EC2 instance
 [demo-2](https://github.com/ductnn/terraform-til/tree/master/demo-2) | Using provisioner
@@ -36,4 +38,3 @@ Demo Directory | Description
 [docker-demo-2](https://github.com/ductnn/terraform-til/tree/master/docker-demo-2) | Using ECS - The EC2 Container Service
 [docker-demo-3](https://github.com/ductnn/terraform-til/tree/master/docker-demo-3) | Using ECR/ECS with Jenkins in a complete workflow
 [module-demo](https://github.com/ductnn/terraform-til/tree/master/module-demo) | Using ECS + ALB in 4 modules to show how developing terraform modules work
-[ductn](https://github.com/ductnn/terraform-til/tree/master/ductn/demo) | Demo deploy a web app to AWS using terraform and ansible
