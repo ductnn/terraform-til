@@ -23,6 +23,7 @@ resource "aws_launch_configuration" "launchconfig" {
     instance_type   = var.INSTANCE_TYPE
     key_name        = aws_key_pair.mykey.key_name
     # security_groups = [aws_security_group.myinstance.id]
+    associate_public_ip_address = true
     security_groups = [var.SECURITY_GROUP_INSTANCE_ID]
     user_data = "${file(var.INSTALL_SOFTWARE)}"
     lifecycle {
